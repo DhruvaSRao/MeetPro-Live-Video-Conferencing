@@ -1,0 +1,237 @@
+/* --- Keyframe Animations --- */
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- Default (Mobile) Styles --- */
+.landingPageContainer {
+  width: 100vw;
+  min-height: 100vh;
+  /* Added a fallback gradient background */
+  background: radial-gradient(ellipse at bottom, #020a2e 0%, #010430 100%);
+  background-image: url("/public/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+.landingPageContainer nav {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* Add perspective for 3D hover on nav items */
+  perspective: 800px;
+}
+
+.landingPageContainer nav h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow */
+}
+
+.landingPageContainer nav .navlist {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Target items in navlist for 3D hover */
+.landingPageContainer nav .navlist > * {
+  transition: transform 0.3s ease;
+}
+
+.landingPageContainer nav .navlist > *:hover {
+  transform: translateZ(30px) scale(1.1); /* 3D pop effect */
+}
+
+.landingMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  min-height: 80vh;
+  align-items: center;
+  text-align: center;
+  gap: 3rem;
+  /* Apply slide-in animation */
+  animation: slideInFromTop 0.8s ease-out forwards;
+}
+
+.landingMainContainer > div:nth-child(1) {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Added text shadow */
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button'] {
+  background: #D97500;
+  width: fit-content;
+  padding: 0.8rem 1.2rem;
+  border-radius: 20px;
+  margin-top: 1.5rem;
+  /* Add transitions for 3D hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(217, 117, 0, 0.4); /* Add a glow */
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button']:hover {
+  transform: scale(1.05) translateZ(20px); /* 3D pop effect */
+  box-shadow: 0 8px 25px rgba(217, 117, 0, 0.6); /* Enhance glow */
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button'] a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600; /* Make text bolder */
+}
+
+.landingMainContainer > div:nth-child(2) img {
+  width: 80vw;
+  max-width: 400px;
+  height: auto;
+  /* Add a subtle drop shadow to lift the image */
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow */
+}
+
+.meetContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  height: auto;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  /* Apply slide-in animation */
+  animation: slideInFromTop 0.8s ease-out forwards;
+}
+
+.leftPanel {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Added text shadow */
+}
+
+.rightPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightPanel > img {
+  width: 90vw;
+  max-width: 450px;
+  height: auto;
+  border-radius: 20px;
+  /* Add shadow to lift the image */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Tablet Styles --- */
+@media (min-width: 769px) {
+  .landingPageContainer nav {
+    padding: 1.6rem 1.2rem;
+  }
+  .landingPageContainer nav h2 {
+    font-size: 1.8rem;
+  }
+  .landingPageContainer nav .navlist {
+    gap: 1.6rem;
+  }
+  
+  .landingMainContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 3rem;
+    height: 80vh;
+    text-align: left;
+    /* Add perspective for 3D button */
+    perspective: 1000px;
+  }
+
+  .landingMainContainer > div:nth-child(1) {
+    font-size: 2rem;
+    align-items: flex-start;
+  }
+  .landingMainContainer > div:nth-child(1) div[role='button'] {
+    padding: 1rem;
+    margin-top: 1.9rem;
+  }
+  .landingMainContainer > div:nth-child(1) div[role='button'] a {
+    font-size: 1.5rem;
+  }
+  .landingMainContainer > div:nth-child(2) img {
+    width: 45vw;
+    height: auto;
+    max-width: none;
+  }
+
+  .navBar {
+    padding-inline: 20px;
+  }
+
+  .meetContainer {
+    flex-direction: row;
+    padding-inline: 20px;
+    height: 80vh;
+    gap: 5vw;
+  }
+  .leftPanel {
+    text-align: left;
+  }
+  .rightPanel > img {
+    width: 40vw;
+    height: auto;
+  }
+}
+
+/* --- Desktop Styles --- */
+@media (min-width: 1025px) {
+  .landingMainContainer > div:nth-child(1) {
+    font-size: 2.2rem;
+  }
+  .landingMainContainer > div:nth-child(1) div[role='button'] a {
+    font-size: 1.7rem;
+  }
+  .landingMainContainer > div:nth-child(2) img {
+    height: 70vh;
+    width: auto;
+  }
+
+  .meetContainer {
+    gap: 10vw;
+  }
+  .rightPanel > img {
+    width: 30vw;
+    height: auto;
+  }
+}
