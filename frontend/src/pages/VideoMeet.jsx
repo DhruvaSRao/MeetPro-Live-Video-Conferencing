@@ -68,7 +68,7 @@ export default function VideoMeetComponent() {
         console.log("HELLO")
         getPermissions();
 
-    },[])
+    })
 
     let getDislayMedia = () => {
         if (screen) {
@@ -83,7 +83,7 @@ export default function VideoMeetComponent() {
 
     const getPermissions = async () => {
         try {
-            const videoPermission = await navigator.mediaDevices.getUserMedia({video:true});
+            const videoPermission = await navigator.mediaDevices.getUserMedia({ video: true });
             if (videoPermission) {
                 setVideoAvailable(true);
                 console.log('Video permission granted');
@@ -243,7 +243,7 @@ export default function VideoMeetComponent() {
             window.localStream = blackSilence()
             localVideoref.current.srcObject = window.localStream
 
-            getUserMedia();
+            getUserMedia()
 
         })
     }
@@ -383,29 +383,12 @@ export default function VideoMeetComponent() {
     }
 
     let handleVideo = () => {
-        const newVideoState = !video;
-        setVideo(newVideoState); // Update state for the UI icon
-
-        if (window.localStream) {
-            // Find the video track on the stream and toggle it
-            const videoTrack = window.localStream.getVideoTracks()[0];
-            if (videoTrack) {
-                videoTrack.enabled = newVideoState;
-            }
-        }
+        setVideo(!video);
+        // getUserMedia();
     }
-
     let handleAudio = () => {
-        const newAudioState = !audio;
-        setAudio(newAudioState); // Update state for the UI icon
-
-        if (window.localStream) {
-            // Find the audio track on the stream and toggle it
-            const audioTrack = window.localStream.getAudioTracks()[0];
-            if (audioTrack) {
-                audioTrack.enabled = newAudioState;
-            }
-        }
+        setAudio(!audio)
+        // getUserMedia();
     }
 
     useEffect(() => {
